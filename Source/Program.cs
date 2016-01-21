@@ -4,6 +4,7 @@ using System.Reflection;
 using System.IO;
 using Critr.Utils;
 using Critr.Db;
+using Critr.UI;
 
 namespace Critr
 {
@@ -84,7 +85,7 @@ namespace Critr
       // Start the app.
       Application.EnableVisualStyles();
       Application.SetCompatibleTextRenderingDefault( false );
-      //Application.Run( new MainForm() );
+      Application.Run( new MainForm() );
 
       // Shutdown.
       Settings.SaveToFile();
