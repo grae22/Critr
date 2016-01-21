@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\User.cs" />
+    <Compile Include="Data\UserCollection.cs" />
     <Compile Include="Db\DbConectionSettings.cs" />
     <Compile Include="Db\DbConnection.cs" />
     <Compile Include="Program.cs" />

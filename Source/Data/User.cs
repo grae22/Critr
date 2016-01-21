@@ -56,6 +56,12 @@ namespace Critr.Data
       
       using( SqlDataReader reader = cmd.ExecuteReader() )
       {
+        if( reader.HasRows == false )
+        {
+          throw new Exception(
+            "No user found with id " + Id + '.' );
+        }
+
         Enabled = reader.GetBoolean( 0 );
         FirstName = reader.GetString( 1 );
         LastName = reader.GetString( 2 );

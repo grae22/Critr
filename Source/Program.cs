@@ -5,6 +5,7 @@ using System.IO;
 using Critr.Utils;
 using Critr.Db;
 using Critr.UI;
+using Critr.Data;
 
 namespace Critr
 {
@@ -15,6 +16,7 @@ namespace Critr
     public static Settings Settings { get; private set; }
     public static DbConnection DbConnection { get; private set; }
     public static Log Log { get; private set; }
+    public static UserCollection UserCollection { get; private set; }
 
     //-------------------------------------------------------------------------
 
@@ -81,6 +83,9 @@ namespace Critr
                          MessageBoxButtons.OK,
                          MessageBoxIcon.Error );
       }
+
+      // User collection.
+      UserCollection = new UserCollection();
 
       // Start the app.
       Application.EnableVisualStyles();
