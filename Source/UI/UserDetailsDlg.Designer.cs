@@ -118,6 +118,7 @@
       this.uiOK.TabIndex = 8;
       this.uiOK.Text = "OK";
       this.uiOK.UseVisualStyleBackColor = true;
+      this.uiOK.Click += new System.EventHandler(this.uiOK_Click);
       // 
       // uiCancel
       // 
@@ -131,6 +132,7 @@
       // 
       // UserDetailsDlg
       // 
+      this.AcceptButton = this.uiOK;
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
       this.CancelButton = this.uiCancel;
@@ -149,6 +151,7 @@
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Name = "UserDetailsDlg";
       this.Text = "User Details";
+      this.Load += new System.EventHandler(this.UserDetailsDlg_Load);
       this.ResumeLayout(false);
       this.PerformLayout();
 

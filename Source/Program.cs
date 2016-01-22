@@ -17,6 +17,7 @@ namespace Critr
     public static DbConnection DbConnection { get; private set; }
     public static Log Log { get; private set; }
     public static UserCollection UserCollection { get; private set; }
+    public static User LoggedOnUser { get; set; }
 
     //-------------------------------------------------------------------------
 
@@ -44,6 +45,36 @@ namespace Critr
                          MessageBoxIcon.Error );
       }
 
+      // P4.
+      string envVarPath = ( Environment.GetEnvironmentVariable( "path" ) ?? "" ).ToLower();
+      string[] envVarPathEntries = envVarPath.Split( ';' );
+      string p4Path = null;
+
+      foreach( string entry in envVarPathEntries )
+      {
+        if( File.Exists( entry + @"\p4.exe" ) )
+        {
+          p4Path = entry;
+          break;
+        }
+      }
+
+      if( p4Path == null )
+      {
+        MessageBox.Show(
+          "Could not find p4.exe in any path in the PATH environment-variable, please add " +
+            "the path where p4.exe is located to the PATH environment-variable.",
+          "Perforce Error",
+          MessageBoxButtons.OK,
+          MessageBoxIcon.Error );
+
+        return;
+      }
+
+      Log.AddEntry(
+        Log.EntryType.INFO,
+        "P4 path: " + p4Path );
+
       // Db.
       try
       {
@@ -55,37 +86,44 @@ namespace Critr
         catch( Exception ex )
         {
           Log.AddEntry( ex );
-          MessageBox.Show( ex.Message,
-                           "Database Error",
-                           MessageBoxButtons.OK,
-                           MessageBoxIcon.Error );
+          
+          MessageBox.Show(
+            ex.Message,
+            "Database Error",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error );
+
           return;
         }
 
-        // Connected to Bugtraq?
+        // Connected to the DB?
         if( DbConnection.Critr.State != System.Data.ConnectionState.Open )
         {
           Log.AddEntry(
             Log.EntryType.ERROR,
-            "Failed to connect to the Bugtraq database." );
+            "Failed to connect to the database." );
 
-          MessageBox.Show( "Failed to connect to the Bugtraq database.",
-                           "Database Error",
-                           MessageBoxButtons.OK,
-                           MessageBoxIcon.Error );
+          MessageBox.Show(
+            "Failed to connect to the database.",
+            "Database Error",
+            MessageBoxButtons.OK,
+            MessageBoxIcon.Error );
         }
       }
       catch( Exception ex )
       {
         Log.AddEntry( ex );
-        MessageBox.Show( ex.Message,
-                         "Database Error",
-                         MessageBoxButtons.OK,
-                         MessageBoxIcon.Error );
+
+        MessageBox.Show(
+          ex.Message,
+          "Database Error",
+          MessageBoxButtons.OK,
+          MessageBoxIcon.Error );
       }
 
-      // User collection.
+      // Init some things.
       UserCollection = new UserCollection();
+      Changelist.LoadChangelists();
 
       // Start the app.
       Application.EnableVisualStyles();

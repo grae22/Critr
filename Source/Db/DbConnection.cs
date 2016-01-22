@@ -45,12 +45,6 @@ public class DbConnection
 
   ~DbConnection()
   {
-		//try
-		//{
-		//	connectionEris.Close();
-		//}
-		//catch {}
-
     try
     {
       connectionCritr.Close();
@@ -98,6 +92,13 @@ public class DbConnection
     {
       return connectionCritr;
     }
+  }
+
+  //---------------------------------------------------------------------------
+
+  public SqlCommand CreateCommand()
+  {
+    return connectionCritr.CreateCommand();
   }
 
   //---------------------------------------------------------------------------
