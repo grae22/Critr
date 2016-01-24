@@ -326,6 +326,7 @@
       this.Controls.Add(this.groupBox1);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Name = "ReviewDlg";
+      this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Review";
       this.Load += new System.EventHandler(this.ReviewDlg_Load);

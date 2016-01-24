@@ -29,21 +29,21 @@
     private void InitializeComponent()
     {
       this.groupBox1 = new System.Windows.Forms.GroupBox();
-      this.label1 = new System.Windows.Forms.Label();
-      this.uiFromDate = new System.Windows.Forms.DateTimePicker();
-      this.uiToDate = new System.Windows.Forms.DateTimePicker();
-      this.label2 = new System.Windows.Forms.Label();
-      this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.uiHideRecentlyReviewedUsers = new System.Windows.Forms.CheckBox();
-      this.groupBox3 = new System.Windows.Forms.GroupBox();
-      this.label3 = new System.Windows.Forms.Label();
-      this.label4 = new System.Windows.Forms.Label();
-      this.label5 = new System.Windows.Forms.Label();
-      this.uiChangelistNumber = new System.Windows.Forms.Label();
-      this.uiChangelistUser = new System.Windows.Forms.Label();
-      this.uiChangelistDate = new System.Windows.Forms.Label();
-      this.uiChangelistFiles = new System.Windows.Forms.ListBox();
+      this.label2 = new System.Windows.Forms.Label();
+      this.uiToDate = new System.Windows.Forms.DateTimePicker();
+      this.uiFromDate = new System.Windows.Forms.DateTimePicker();
+      this.label1 = new System.Windows.Forms.Label();
+      this.groupBox2 = new System.Windows.Forms.GroupBox();
       this.uiChangelists = new System.Windows.Forms.ListBox();
+      this.groupBox3 = new System.Windows.Forms.GroupBox();
+      this.uiChangelistFiles = new System.Windows.Forms.ListBox();
+      this.uiChangelistDate = new System.Windows.Forms.Label();
+      this.uiChangelistUser = new System.Windows.Forms.Label();
+      this.uiChangelistNumber = new System.Windows.Forms.Label();
+      this.label5 = new System.Windows.Forms.Label();
+      this.label4 = new System.Windows.Forms.Label();
+      this.label3 = new System.Windows.Forms.Label();
       this.groupBox1.SuspendLayout();
       this.groupBox2.SuspendLayout();
       this.groupBox3.SuspendLayout();
@@ -63,24 +63,26 @@
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Filters:";
       // 
-      // label1
+      // uiHideRecentlyReviewedUsers
       // 
-      this.label1.AutoSize = true;
-      this.label1.Location = new System.Drawing.Point(15, 30);
-      this.label1.Name = "label1";
-      this.label1.Size = new System.Drawing.Size(33, 13);
-      this.label1.TabIndex = 0;
-      this.label1.Text = "Date:";
+      this.uiHideRecentlyReviewedUsers.AutoSize = true;
+      this.uiHideRecentlyReviewedUsers.Checked = true;
+      this.uiHideRecentlyReviewedUsers.CheckState = System.Windows.Forms.CheckState.Checked;
+      this.uiHideRecentlyReviewedUsers.Location = new System.Drawing.Point(346, 29);
+      this.uiHideRecentlyReviewedUsers.Name = "uiHideRecentlyReviewedUsers";
+      this.uiHideRecentlyReviewedUsers.Size = new System.Drawing.Size(165, 17);
+      this.uiHideRecentlyReviewedUsers.TabIndex = 3;
+      this.uiHideRecentlyReviewedUsers.Text = "Hide recently reviewed users.";
+      this.uiHideRecentlyReviewedUsers.UseVisualStyleBackColor = true;
       // 
-      // uiFromDate
+      // label2
       // 
-      this.uiFromDate.CustomFormat = "yyyy/MM/dd";
-      this.uiFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-      this.uiFromDate.Location = new System.Drawing.Point(54, 26);
-      this.uiFromDate.Name = "uiFromDate";
-      this.uiFromDate.Size = new System.Drawing.Size(92, 20);
-      this.uiFromDate.TabIndex = 1;
-      this.uiFromDate.ValueChanged += new System.EventHandler(this.uiFromDate_ValueChanged);
+      this.label2.AutoSize = true;
+      this.label2.Location = new System.Drawing.Point(152, 30);
+      this.label2.Name = "label2";
+      this.label2.Size = new System.Drawing.Size(16, 13);
+      this.label2.TabIndex = 3;
+      this.label2.Text = "to";
       // 
       // uiToDate
       // 
@@ -92,14 +94,24 @@
       this.uiToDate.TabIndex = 2;
       this.uiToDate.ValueChanged += new System.EventHandler(this.uiToDate_ValueChanged);
       // 
-      // label2
+      // uiFromDate
       // 
-      this.label2.AutoSize = true;
-      this.label2.Location = new System.Drawing.Point(152, 30);
-      this.label2.Name = "label2";
-      this.label2.Size = new System.Drawing.Size(16, 13);
-      this.label2.TabIndex = 3;
-      this.label2.Text = "to";
+      this.uiFromDate.CustomFormat = "yyyy/MM/dd";
+      this.uiFromDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+      this.uiFromDate.Location = new System.Drawing.Point(54, 26);
+      this.uiFromDate.Name = "uiFromDate";
+      this.uiFromDate.Size = new System.Drawing.Size(92, 20);
+      this.uiFromDate.TabIndex = 1;
+      this.uiFromDate.ValueChanged += new System.EventHandler(this.uiFromDate_ValueChanged);
+      // 
+      // label1
+      // 
+      this.label1.AutoSize = true;
+      this.label1.Location = new System.Drawing.Point(15, 30);
+      this.label1.Name = "label1";
+      this.label1.Size = new System.Drawing.Size(33, 13);
+      this.label1.TabIndex = 0;
+      this.label1.Text = "Date:";
       // 
       // groupBox2
       // 
@@ -112,17 +124,15 @@
       this.groupBox2.TabStop = false;
       this.groupBox2.Text = "Changelists:";
       // 
-      // uiHideRecentlyReviewedUsers
+      // uiChangelists
       // 
-      this.uiHideRecentlyReviewedUsers.AutoSize = true;
-      this.uiHideRecentlyReviewedUsers.Checked = true;
-      this.uiHideRecentlyReviewedUsers.CheckState = System.Windows.Forms.CheckState.Checked;
-      this.uiHideRecentlyReviewedUsers.Location = new System.Drawing.Point(346, 29);
-      this.uiHideRecentlyReviewedUsers.Name = "uiHideRecentlyReviewedUsers";
-      this.uiHideRecentlyReviewedUsers.Size = new System.Drawing.Size(165, 17);
-      this.uiHideRecentlyReviewedUsers.TabIndex = 3;
-      this.uiHideRecentlyReviewedUsers.Text = "Hide recently reviewed users.";
-      this.uiHideRecentlyReviewedUsers.UseVisualStyleBackColor = true;
+      this.uiChangelists.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.uiChangelists.FormattingEnabled = true;
+      this.uiChangelists.Location = new System.Drawing.Point(8, 21);
+      this.uiChangelists.Name = "uiChangelists";
+      this.uiChangelists.Size = new System.Drawing.Size(516, 193);
+      this.uiChangelists.TabIndex = 7;
+      this.uiChangelists.SelectedIndexChanged += new System.EventHandler(this.uiChangelists_SelectedIndexChanged);
       // 
       // groupBox3
       // 
@@ -140,52 +150,13 @@
       this.groupBox3.TabStop = false;
       this.groupBox3.Text = "Selected Changelist:";
       // 
-      // label3
+      // uiChangelistFiles
       // 
-      this.label3.AutoSize = true;
-      this.label3.Location = new System.Drawing.Point(15, 30);
-      this.label3.Name = "label3";
-      this.label3.Size = new System.Drawing.Size(69, 13);
-      this.label3.TabIndex = 0;
-      this.label3.Text = "Changelist #:";
-      // 
-      // label4
-      // 
-      this.label4.AutoSize = true;
-      this.label4.Location = new System.Drawing.Point(171, 30);
-      this.label4.Name = "label4";
-      this.label4.Size = new System.Drawing.Size(32, 13);
-      this.label4.TabIndex = 1;
-      this.label4.Text = "User:";
-      // 
-      // label5
-      // 
-      this.label5.AutoSize = true;
-      this.label5.Location = new System.Drawing.Point(307, 30);
-      this.label5.Name = "label5";
-      this.label5.Size = new System.Drawing.Size(33, 13);
-      this.label5.TabIndex = 2;
-      this.label5.Text = "Date:";
-      // 
-      // uiChangelistNumber
-      // 
-      this.uiChangelistNumber.AutoSize = true;
-      this.uiChangelistNumber.ForeColor = System.Drawing.Color.Navy;
-      this.uiChangelistNumber.Location = new System.Drawing.Point(90, 30);
-      this.uiChangelistNumber.Name = "uiChangelistNumber";
-      this.uiChangelistNumber.Size = new System.Drawing.Size(37, 13);
-      this.uiChangelistNumber.TabIndex = 3;
-      this.uiChangelistNumber.Text = "12345";
-      // 
-      // uiChangelistUser
-      // 
-      this.uiChangelistUser.AutoSize = true;
-      this.uiChangelistUser.ForeColor = System.Drawing.Color.Navy;
-      this.uiChangelistUser.Location = new System.Drawing.Point(209, 30);
-      this.uiChangelistUser.Name = "uiChangelistUser";
-      this.uiChangelistUser.Size = new System.Drawing.Size(55, 13);
-      this.uiChangelistUser.TabIndex = 4;
-      this.uiChangelistUser.Text = "Username";
+      this.uiChangelistFiles.FormattingEnabled = true;
+      this.uiChangelistFiles.Location = new System.Drawing.Point(18, 61);
+      this.uiChangelistFiles.Name = "uiChangelistFiles";
+      this.uiChangelistFiles.Size = new System.Drawing.Size(493, 108);
+      this.uiChangelistFiles.TabIndex = 6;
       // 
       // uiChangelistDate
       // 
@@ -197,22 +168,52 @@
       this.uiChangelistDate.TabIndex = 5;
       this.uiChangelistDate.Text = "2016/01/01 12:59";
       // 
-      // uiChangelistFiles
+      // uiChangelistUser
       // 
-      this.uiChangelistFiles.FormattingEnabled = true;
-      this.uiChangelistFiles.Location = new System.Drawing.Point(18, 61);
-      this.uiChangelistFiles.Name = "uiChangelistFiles";
-      this.uiChangelistFiles.Size = new System.Drawing.Size(493, 108);
-      this.uiChangelistFiles.TabIndex = 6;
+      this.uiChangelistUser.AutoSize = true;
+      this.uiChangelistUser.ForeColor = System.Drawing.Color.Navy;
+      this.uiChangelistUser.Location = new System.Drawing.Point(209, 30);
+      this.uiChangelistUser.Name = "uiChangelistUser";
+      this.uiChangelistUser.Size = new System.Drawing.Size(55, 13);
+      this.uiChangelistUser.TabIndex = 4;
+      this.uiChangelistUser.Text = "Username";
       // 
-      // uiChangelists
+      // uiChangelistNumber
       // 
-      this.uiChangelists.Dock = System.Windows.Forms.DockStyle.Fill;
-      this.uiChangelists.FormattingEnabled = true;
-      this.uiChangelists.Location = new System.Drawing.Point(8, 21);
-      this.uiChangelists.Name = "uiChangelists";
-      this.uiChangelists.Size = new System.Drawing.Size(516, 193);
-      this.uiChangelists.TabIndex = 7;
+      this.uiChangelistNumber.AutoSize = true;
+      this.uiChangelistNumber.ForeColor = System.Drawing.Color.Navy;
+      this.uiChangelistNumber.Location = new System.Drawing.Point(90, 30);
+      this.uiChangelistNumber.Name = "uiChangelistNumber";
+      this.uiChangelistNumber.Size = new System.Drawing.Size(37, 13);
+      this.uiChangelistNumber.TabIndex = 3;
+      this.uiChangelistNumber.Text = "12345";
+      // 
+      // label5
+      // 
+      this.label5.AutoSize = true;
+      this.label5.Location = new System.Drawing.Point(307, 30);
+      this.label5.Name = "label5";
+      this.label5.Size = new System.Drawing.Size(33, 13);
+      this.label5.TabIndex = 2;
+      this.label5.Text = "Date:";
+      // 
+      // label4
+      // 
+      this.label4.AutoSize = true;
+      this.label4.Location = new System.Drawing.Point(171, 30);
+      this.label4.Name = "label4";
+      this.label4.Size = new System.Drawing.Size(32, 13);
+      this.label4.TabIndex = 1;
+      this.label4.Text = "User:";
+      // 
+      // label3
+      // 
+      this.label3.AutoSize = true;
+      this.label3.Location = new System.Drawing.Point(15, 30);
+      this.label3.Name = "label3";
+      this.label3.Size = new System.Drawing.Size(69, 13);
+      this.label3.TabIndex = 0;
+      this.label3.Text = "Changelist #:";
       // 
       // SelectChangelist
       // 
@@ -225,6 +226,7 @@
       this.Controls.Add(this.groupBox1);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Name = "SelectChangelist";
+      this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Select Changelist";
       this.Load += new System.EventHandler(this.SelectChangelist_Load);

@@ -51,8 +51,8 @@ namespace Critr.Data
     {
       string output =
         Perforce.RunCommand(
-          "changes @" + fromDate.ToString( "yyyy/MM/dd" ) + ",@" +
-          toDate.ToString( "yyyy/MM/dd" ) );
+          "changes @" + fromDate.ToString( "yyyy/MM/dd:00:00" ) + ",@" +
+          toDate.ToString( "yyyy/MM/dd:23:59" ) );
 
       string[] lines =
         output.Split( new string[] { Environment.NewLine }, StringSplitOptions.None );
@@ -95,7 +95,8 @@ namespace Critr.Data
         string username = tmp.Substring( 0, tmp.IndexOf( '@' ) );
         User user = Program.UserCollection.GetUser( username );
 
-        if( user == null )
+        if( user == null ||
+            user.IsReviewCandidate == false )
         {
           continue;
         }

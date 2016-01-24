@@ -151,6 +151,7 @@
       this.Controls.Add(this.label1);
       this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Name = "UserDetailsDlg";
+      this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "User Details";
       this.Load += new System.EventHandler(this.UserDetailsDlg_Load);

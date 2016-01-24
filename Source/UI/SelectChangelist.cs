@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using Critr.Data;
+using Critr.Utils;
 
 namespace Critr.UI
 {
@@ -37,6 +38,7 @@ namespace Critr.UI
       }
 
       PopulateChangelists();
+      uiChangelists_SelectedIndexChanged( null, null );
     }
 
     //-------------------------------------------------------------------------
@@ -69,6 +71,8 @@ namespace Critr.UI
 
     private void PopulateChangelists()
     {
+      uiChangelists.Items.Clear();
+
       List<Changelist> changelists = new List<Changelist>();
 
       ChangelistHelpers.GetChangelistsFromP4(
@@ -79,6 +83,55 @@ namespace Critr.UI
       foreach( Changelist changelist in changelists )
       {
         uiChangelists.Items.Add( changelist );
+      }
+    }
+
+    //-------------------------------------------------------------------------
+
+    private void uiChangelists_SelectedIndexChanged( object sender, EventArgs e )
+    {
+      // Reset form section.
+      uiChangelistFiles.Items.Clear();
+
+      uiChangelistNumber.Text = "";
+      uiChangelistUser.Text = "";
+      uiChangelistDate.Text = "";
+
+      // Get the selected changelist.
+      Changelist changelist = uiChangelists.SelectedItem as Changelist;
+
+      if( changelist == null )
+      {
+        return;
+      }
+
+      uiChangelistNumber.Text = changelist.Id.ToString();
+      uiChangelistUser.Text = changelist.Submitter.Username;
+      uiChangelistDate.Text = changelist.SubmittedDate.ToString( "yyyy/MM/dd" );
+
+      //-- Get changelist's files from P4.
+      string output = Perforce.RunCommand( "describe -s " + changelist.Id );
+
+      // Exract files from output.
+      int index = output.IndexOf( "Affected files ..." );
+
+      while( ( index = output.IndexOf( "... ", index + 1 ) ) > -1 )
+      {
+        // Skip the "... " prefixing the path.
+        index += 4;
+
+        // Grab the path from between the ellipses and the revision.
+        int revisionIndex = output.IndexOf( '#', index );
+
+        if( revisionIndex < 0 )
+        {
+          continue;
+        }
+
+        string path = output.Substring( index, revisionIndex - index );
+
+        // Add file path to the ui list.
+        uiChangelistFiles.Items.Add( path );
       }
     }
 
