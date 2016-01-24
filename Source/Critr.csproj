@@ -60,6 +60,12 @@
     <Compile Include="UI\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\ReviewContentDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\ReviewContentDlg.Designer.cs">
+      <DependentUpon>ReviewContentDlg.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\ReviewDlg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,9 @@
     </Compile>
     <EmbeddedResource Include="UI\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ReviewContentDlg.resx">
+      <DependentUpon>ReviewContentDlg.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReviewDlg.resx">
       <DependentUpon>ReviewDlg.cs</DependentUpon>

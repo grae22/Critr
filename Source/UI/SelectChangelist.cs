@@ -121,7 +121,7 @@ namespace Critr.UI
         index += 4;
 
         // Grab the path from between the ellipses and the revision.
-        int revisionIndex = output.IndexOf( '#', index );
+        int revisionIndex = output.IndexOf( ' ', index );
 
         if( revisionIndex < 0 )
         {
@@ -133,6 +133,31 @@ namespace Critr.UI
         // Add file path to the ui list.
         uiChangelistFiles.Items.Add( path );
       }
+    }
+
+    //-------------------------------------------------------------------------
+
+    private void uiChangelistFiles_SelectedIndexChanged( object sender, EventArgs e )
+    {
+      if( uiChangelistFiles.SelectedItem == null )
+      {
+        return;
+      }
+
+      string path = uiChangelistFiles.SelectedItem as string;
+      int revIndex = path.LastIndexOf( '#' ) + 1;
+      string revStr = path.Substring( revIndex, path.Length - revIndex );
+      int rev = 0;
+
+      if( int.TryParse( revStr, out rev ) == false )
+      {
+        return;
+      }
+
+      path = path.Remove( revIndex - 1 );
+
+      ReviewContentDlg dlg = new ReviewContentDlg( path, rev );
+      dlg.ShowDialog( this );
     }
 
     //-------------------------------------------------------------------------

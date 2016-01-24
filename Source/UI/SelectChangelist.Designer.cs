@@ -153,10 +153,12 @@
       // uiChangelistFiles
       // 
       this.uiChangelistFiles.FormattingEnabled = true;
+      this.uiChangelistFiles.HorizontalScrollbar = true;
       this.uiChangelistFiles.Location = new System.Drawing.Point(18, 61);
       this.uiChangelistFiles.Name = "uiChangelistFiles";
       this.uiChangelistFiles.Size = new System.Drawing.Size(493, 108);
       this.uiChangelistFiles.TabIndex = 6;
+      this.uiChangelistFiles.SelectedIndexChanged += new System.EventHandler(this.uiChangelistFiles_SelectedIndexChanged);
       // 
       // uiChangelistDate
       // 
