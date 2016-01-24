@@ -59,16 +59,8 @@ namespace Critr.Data
 
     private void LoadFromP4()
     {
-      // Query P4 for all users.
-      Process p = new Process();
-      p.StartInfo.UseShellExecute = false;
-      p.StartInfo.RedirectStandardOutput = true;
-      p.StartInfo.FileName = "p4.exe";
-      p.StartInfo.Arguments = "users";
-      p.Start();
-
-      string output = p.StandardOutput.ReadToEnd();
-      p.WaitForExit( 1000 );
+      // Get users from P4.
+      string output = Perforce.RunCommand( "users" );
 
       // Split the output into individual lines.
       string[] lines = output.Split( new string[] { Environment.NewLine }, StringSplitOptions.None );

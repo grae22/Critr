@@ -79,6 +79,7 @@
       <DependentUpon>UserDetailsDlg.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Log.cs" />
+    <Compile Include="Utils\Perforce.cs" />
     <Compile Include="Utils\Settings.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -63,13 +63,13 @@ namespace Critr.UI
       if( changelist != null )
       {
         // User.
-        if( changelist.SubmittedByUser == null )
+        if( changelist.Submitter == null )
         {
           uiChangelistUser.Text = "UNKNOWN";
         }
         else
         {
-          uiChangelistUser.Text = changelist.SubmittedByUser.Username;
+          uiChangelistUser.Text = changelist.Submitter.Username;
         }
 
         // General.
@@ -94,7 +94,7 @@ namespace Critr.UI
 
     private void uiSelectChangelist_Click( object sender, EventArgs e )
     {
-      SelectChangelist dlg = new SelectChangelist();
+      SelectChangelist dlg = new SelectChangelist( null );
       dlg.ShowDialog( this );
       dlg.Close();
     }
