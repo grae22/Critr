@@ -29,6 +29,7 @@
     private void InitializeComponent()
     {
       this.groupBox1 = new System.Windows.Forms.GroupBox();
+      this.uiSelectChangelist = new System.Windows.Forms.Button();
       this.uiFileRevision = new System.Windows.Forms.Label();
       this.uiFile = new System.Windows.Forms.Label();
       this.uiSubmittedDate = new System.Windows.Forms.Label();
@@ -51,7 +52,6 @@
       this.label8 = new System.Windows.Forms.Label();
       this.uiCancel = new System.Windows.Forms.Button();
       this.uiOK = new System.Windows.Forms.Button();
-      this.uiSelectChangelist = new System.Windows.Forms.Button();
       this.groupBox1.SuspendLayout();
       this.groupBox2.SuspendLayout();
       this.SuspendLayout();
@@ -77,6 +77,16 @@
       this.groupBox1.TabIndex = 0;
       this.groupBox1.TabStop = false;
       this.groupBox1.Text = "Changelist:";
+      // 
+      // uiSelectChangelist
+      // 
+      this.uiSelectChangelist.Location = new System.Drawing.Point(19, 20);
+      this.uiSelectChangelist.Name = "uiSelectChangelist";
+      this.uiSelectChangelist.Size = new System.Drawing.Size(87, 23);
+      this.uiSelectChangelist.TabIndex = 13;
+      this.uiSelectChangelist.Text = "Select";
+      this.uiSelectChangelist.UseVisualStyleBackColor = true;
+      this.uiSelectChangelist.Click += new System.EventHandler(this.uiSelectChangelist_Click);
       // 
       // uiFileRevision
       // 
@@ -301,15 +311,6 @@
       this.uiOK.TabIndex = 3;
       this.uiOK.Text = "OK";
       this.uiOK.UseVisualStyleBackColor = true;
-      // 
-      // uiSelectChangelist
-      // 
-      this.uiSelectChangelist.Location = new System.Drawing.Point(19, 20);
-      this.uiSelectChangelist.Name = "uiSelectChangelist";
-      this.uiSelectChangelist.Size = new System.Drawing.Size(87, 23);
-      this.uiSelectChangelist.TabIndex = 13;
-      this.uiSelectChangelist.Text = "Select";
-      this.uiSelectChangelist.UseVisualStyleBackColor = true;
       // 
       // ReviewDlg
       // 

@@ -91,5 +91,14 @@ namespace Critr.UI
     }
 
     //-------------------------------------------------------------------------
+
+    private void uiSelectChangelist_Click( object sender, EventArgs e )
+    {
+      SelectChangelist dlg = new SelectChangelist();
+      dlg.ShowDialog( this );
+      dlg.Close();
+    }
+
+    //-------------------------------------------------------------------------
   }
 }

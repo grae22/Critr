@@ -66,6 +66,12 @@
     <Compile Include="UI\ReviewDlg.Designer.cs">
       <DependentUpon>ReviewDlg.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SelectChangelist.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SelectChangelist.Designer.cs">
+      <DependentUpon>SelectChangelist.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserDetailsDlg.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -89,6 +95,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReviewDlg.resx">
       <DependentUpon>ReviewDlg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SelectChangelist.resx">
+      <DependentUpon>SelectChangelist.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserDetailsDlg.resx">
       <DependentUpon>UserDetailsDlg.cs</DependentUpon>
