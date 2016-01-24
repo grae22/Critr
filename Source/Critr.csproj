@@ -46,6 +46,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Data\Changelist.cs" />
+    <Compile Include="Data\ChangelistHelpers.cs" />
     <Compile Include="Data\ReviewItem.cs" />
     <Compile Include="Data\User.cs" />
     <Compile Include="Data\UserCollection.cs" />

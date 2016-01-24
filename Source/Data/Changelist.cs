@@ -8,45 +8,12 @@ namespace Critr.Data
   {
     //-------------------------------------------------------------------------
 
-    public static Dictionary<int, Changelist> Changelists = new Dictionary<int, Changelist>();
-
     public int Id { get; private set; }
     public string Description { get; private set; }
     public User SubmittedByUser { get; private set; }
     public DateTime SubmittedDate { get; private set; }
 
     private int _userId = -1;
-
-    //-------------------------------------------------------------------------
-
-    // Static method to load changelists from the Critr DB.
-
-    public static void LoadChangelists()
-    {
-      Changelists.Clear();
-
-      // Get changelist IDs.
-      List<int> changelistIDs = new List<int>();
-
-      SqlCommand cmd = Program.DbConnection.CreateCommand();
-      cmd.CommandText =
-        "SELECT id " +
-        "FROM Changelist";
-
-      using( SqlDataReader reader = cmd.ExecuteReader() )
-      {
-        while( reader.Read() )
-        {
-          changelistIDs.Add( reader.GetInt32( 0 ) );
-        }
-      }
-
-      // Load the changelists.
-      foreach( int id in changelistIDs )
-      {
-        Changelists.Add( id, new Changelist( id ) );
-      }
-    }
 
     //-------------------------------------------------------------------------
 
@@ -61,7 +28,6 @@ namespace Critr.Data
     }
 
     //-------------------------------------------------------------------------
-
 
     private void LoadDataFromDb()
     {

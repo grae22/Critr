@@ -134,8 +134,10 @@ public class DbConnectionSettings
       }
       else
       {
-        connectionString += "Trusted_Connection=True;Connection Timeout=5;";
+        connectionString += "Trusted_Connection=True;";
       }
+
+      connectionString += "Timeout=5;";
 
       return connectionString;
     }

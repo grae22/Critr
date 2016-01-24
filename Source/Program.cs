@@ -123,7 +123,7 @@ namespace Critr
 
       // Init some things.
       UserCollection = new UserCollection();
-      Changelist.LoadChangelists();
+      ChangelistHelpers.LoadChangelists();
 
       // Start the app.
       Application.EnableVisualStyles();

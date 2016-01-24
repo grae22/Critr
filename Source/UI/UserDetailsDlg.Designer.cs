@@ -129,6 +129,7 @@
       this.uiCancel.TabIndex = 9;
       this.uiCancel.Text = "Cancel";
       this.uiCancel.UseVisualStyleBackColor = true;
+      this.uiCancel.Click += new System.EventHandler(this.uiCancel_Click);
       // 
       // UserDetailsDlg
       // 

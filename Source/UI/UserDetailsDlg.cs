@@ -53,5 +53,14 @@ namespace Critr.UI
     }
 
     //-------------------------------------------------------------------------
+
+    private void uiCancel_Click( object sender, EventArgs e )
+    {
+      SelectedUser = null;
+
+      Hide();
+    }
+
+    //-------------------------------------------------------------------------
   }
 }

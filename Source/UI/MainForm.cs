@@ -37,6 +37,16 @@ namespace Critr.UI
         Program.LoggedOnUser == null ? "" : Program.LoggedOnUser.Username,
         false );
 
+      // Update the form title with the username.
+      if( Program.LoggedOnUser != null )
+      {
+        Text += " (User: " + Program.LoggedOnUser.Username + ')';
+      }
+      else
+      {
+        Text += " (No User)";
+      }
+
       // Clean up.
       dlg.Close();
 
@@ -57,7 +67,7 @@ namespace Critr.UI
 
     private void uiNewReview_Click( object sender, EventArgs e )
     {
-      ReviewDlg dlg = new ReviewDlg();
+      ReviewDlg dlg = new ReviewDlg( null );
       dlg.ShowDialog( this );
       dlg.Dispose();
     }

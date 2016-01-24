@@ -90,13 +90,13 @@
       this.uiReviewsMenu.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uiNewReview});
       this.uiReviewsMenu.Name = "uiReviewsMenu";
-      this.uiReviewsMenu.Size = new System.Drawing.Size(61, 20);
+      this.uiReviewsMenu.Size = new System.Drawing.Size(59, 20);
       this.uiReviewsMenu.Text = "&Reviews";
       // 
       // uiNewReview
       // 
       this.uiNewReview.Name = "uiNewReview";
-      this.uiNewReview.Size = new System.Drawing.Size(152, 22);
+      this.uiNewReview.Size = new System.Drawing.Size(95, 22);
       this.uiNewReview.Text = "&New";
       this.uiNewReview.Click += new System.EventHandler(this.uiNewReview_Click);
       // 
@@ -201,7 +201,7 @@
       // 
       this.uiSplit1_2.Panel2.Controls.Add(this.uiSplit2_1);
       this.uiSplit1_2.Size = new System.Drawing.Size(809, 574);
-      this.uiSplit1_2.SplitterDistance = 505;
+      this.uiSplit1_2.SplitterDistance = 504;
       this.uiSplit1_2.TabIndex = 0;
       // 
       // groupBox3
@@ -211,7 +211,7 @@
       this.groupBox3.Location = new System.Drawing.Point(0, 0);
       this.groupBox3.Name = "groupBox3";
       this.groupBox3.Padding = new System.Windows.Forms.Padding(8);
-      this.groupBox3.Size = new System.Drawing.Size(505, 574);
+      this.groupBox3.Size = new System.Drawing.Size(504, 574);
       this.groupBox3.TabIndex = 0;
       this.groupBox3.TabStop = false;
       this.groupBox3.Text = "Review Content:";
@@ -222,7 +222,7 @@
       this.uiReviewContent.Dock = System.Windows.Forms.DockStyle.Fill;
       this.uiReviewContent.Location = new System.Drawing.Point(8, 21);
       this.uiReviewContent.Name = "uiReviewContent";
-      this.uiReviewContent.Size = new System.Drawing.Size(489, 545);
+      this.uiReviewContent.Size = new System.Drawing.Size(488, 545);
       this.uiReviewContent.TabIndex = 1;
       this.uiReviewContent.Text = "";
       // 
@@ -240,7 +240,7 @@
       // uiSplit2_1.Panel2
       // 
       this.uiSplit2_1.Panel2.Controls.Add(this.uiSplit2_3);
-      this.uiSplit2_1.Size = new System.Drawing.Size(300, 574);
+      this.uiSplit2_1.Size = new System.Drawing.Size(301, 574);
       this.uiSplit2_1.SplitterDistance = 156;
       this.uiSplit2_1.TabIndex = 0;
       // 
@@ -251,7 +251,7 @@
       this.groupBox4.Location = new System.Drawing.Point(0, 0);
       this.groupBox4.Name = "groupBox4";
       this.groupBox4.Padding = new System.Windows.Forms.Padding(8);
-      this.groupBox4.Size = new System.Drawing.Size(300, 156);
+      this.groupBox4.Size = new System.Drawing.Size(301, 156);
       this.groupBox4.TabIndex = 0;
       this.groupBox4.TabStop = false;
       this.groupBox4.Text = "Comment:";
@@ -263,7 +263,7 @@
       this.uiComment.Multiline = true;
       this.uiComment.Name = "uiComment";
       this.uiComment.ReadOnly = true;
-      this.uiComment.Size = new System.Drawing.Size(284, 127);
+      this.uiComment.Size = new System.Drawing.Size(285, 127);
       this.uiComment.TabIndex = 0;
       // 
       // uiSplit2_3
@@ -280,7 +280,7 @@
       // uiSplit2_3.Panel2
       // 
       this.uiSplit2_3.Panel2.Controls.Add(this.groupBox6);
-      this.uiSplit2_3.Size = new System.Drawing.Size(300, 414);
+      this.uiSplit2_3.Size = new System.Drawing.Size(301, 414);
       this.uiSplit2_3.SplitterDistance = 195;
       this.uiSplit2_3.TabIndex = 0;
       // 
@@ -291,7 +291,7 @@
       this.groupBox5.Margin = new System.Windows.Forms.Padding(8);
       this.groupBox5.Name = "groupBox5";
       this.groupBox5.Padding = new System.Windows.Forms.Padding(8);
-      this.groupBox5.Size = new System.Drawing.Size(300, 195);
+      this.groupBox5.Size = new System.Drawing.Size(301, 195);
       this.groupBox5.TabIndex = 1;
       this.groupBox5.TabStop = false;
       this.groupBox5.Text = "Metrics (pertaining to the current comment):";
@@ -303,7 +303,7 @@
       this.groupBox6.Margin = new System.Windows.Forms.Padding(8);
       this.groupBox6.Name = "groupBox6";
       this.groupBox6.Padding = new System.Windows.Forms.Padding(8);
-      this.groupBox6.Size = new System.Drawing.Size(300, 215);
+      this.groupBox6.Size = new System.Drawing.Size(301, 215);
       this.groupBox6.TabIndex = 2;
       this.groupBox6.TabStop = false;
       this.groupBox6.Text = "Metrics (pertaining to the review in general):";
@@ -318,6 +318,7 @@
       this.MainMenuStrip = this.uiMenuStrip;
       this.Name = "MainForm";
       this.Padding = new System.Windows.Forms.Padding(4, 0, 4, 4);
+      this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
       this.Text = "Critr";
       this.Load += new System.EventHandler(this.MainForm_Load);
       this.uiMenuStrip.ResumeLayout(false);
