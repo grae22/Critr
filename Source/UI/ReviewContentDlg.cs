@@ -33,6 +33,13 @@ namespace Critr.UI
 
     //-------------------------------------------------------------------------
 
+    private void ReviewContentDlg_Load( object sender, EventArgs e )
+    {
+
+    }
+
+    //-------------------------------------------------------------------------
+
     private void uiClose_Click( object sender, EventArgs e )
     {
       Close();

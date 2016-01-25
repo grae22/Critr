@@ -98,8 +98,14 @@ namespace Critr.Data
               throw new Exception( "Insert-point is out-of-bounds." );
             }
 
+            string tmp = line;
+            while( tmp.Length < 80 )
+            {
+              tmp += ' ';
+            }
+
             prevContentLines.RemoveAt( insertPoint );
-            prevContentLines.Insert( insertPoint, "<font bgcolor='" + c_changeColour_subtraction + "'>" + line + "</font>" );
+            prevContentLines.Insert( insertPoint, "<font bgcolor='" + c_changeColour_subtraction + "'>" + tmp + "</font>" );
           }
 
           insertPoint++;
@@ -119,8 +125,8 @@ namespace Critr.Data
       // Create html.
       string html =
         "<html>" + Environment.NewLine +
-        "  <head><style>body { font-family: Courier New; font-size: 100%; }</style></head>" + Environment.NewLine +
-        "  <body>" + Environment.NewLine;
+        "<head></head>" + Environment.NewLine +
+        "<body>" + Environment.NewLine;
 
       foreach( string line in prevContentLines )
       {
@@ -130,11 +136,13 @@ namespace Critr.Data
         lineNumber++;
       }
 
-      html += Environment.NewLine + "  </body>" + Environment.NewLine + "</html>";
+      html += Environment.NewLine + "</body>" + Environment.NewLine + "</html>";
 
+      // Replace spaces with '@nbsp;' (exclude tags).
       string htmlCopy = html;
       bool isAngleBrackOpen = false;
       int htmlOffset = 0;
+
       for( int i = 0; i < htmlCopy.Length; i++ )
       {
         if( htmlCopy[ i ] == '<' )
@@ -148,12 +156,19 @@ namespace Critr.Data
         else if( htmlCopy[ i ] == ' ' &&
                  isAngleBrackOpen == false )
         {
-          html.Insert( htmlOffset, "&nbsp;" );
-          i += "&nbsp;".Length - 1;
+          html = html.Remove( htmlOffset, 1 );
+          html = html.Insert( htmlOffset, "&nbsp;" );
+          htmlOffset += "&nbsp;".Length;
+          continue;
         }
 
         htmlOffset++;
       }
+
+      html =
+        html.Insert(
+          html.IndexOf( "</head>" ),
+          "<style>body { font-family: Courier New; font-size: 100%; }</style>" );
 
       return html;
     }
