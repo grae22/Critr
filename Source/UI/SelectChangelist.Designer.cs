@@ -44,6 +44,7 @@
       this.label5 = new System.Windows.Forms.Label();
       this.label4 = new System.Windows.Forms.Label();
       this.label3 = new System.Windows.Forms.Label();
+      this.uiClose = new System.Windows.Forms.Button();
       this.groupBox1.SuspendLayout();
       this.groupBox2.SuspendLayout();
       this.groupBox3.SuspendLayout();
@@ -217,12 +218,25 @@
       this.label3.TabIndex = 0;
       this.label3.Text = "Changelist #:";
       // 
+      // uiClose
+      // 
+      this.uiClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+      this.uiClose.Location = new System.Drawing.Point(446, 515);
+      this.uiClose.Name = "uiClose";
+      this.uiClose.Size = new System.Drawing.Size(98, 27);
+      this.uiClose.TabIndex = 3;
+      this.uiClose.Text = "Close";
+      this.uiClose.UseVisualStyleBackColor = true;
+      this.uiClose.Click += new System.EventHandler(this.uiClose_Click);
+      // 
       // SelectChangelist
       // 
       this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
       this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-      this.ClientSize = new System.Drawing.Size(556, 512);
+      this.CancelButton = this.uiClose;
+      this.ClientSize = new System.Drawing.Size(556, 555);
       this.ControlBox = false;
+      this.Controls.Add(this.uiClose);
       this.Controls.Add(this.groupBox3);
       this.Controls.Add(this.groupBox2);
       this.Controls.Add(this.groupBox1);
@@ -259,5 +273,6 @@
     private System.Windows.Forms.Label uiChangelistNumber;
     private System.Windows.Forms.ListBox uiChangelistFiles;
     private System.Windows.Forms.ListBox uiChangelists;
+    private System.Windows.Forms.Button uiClose;
   }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using Critr.Utils;
+using Critr.Data;
 
 namespace Critr.UI
 {
@@ -14,10 +15,7 @@ namespace Critr.UI
       InitializeComponent();
 
       uiContent.Text =
-        Perforce.RunCommand(
-          "diff2 -u " +
-            filePath + '#' + ( revision - 1 ) + ' ' +
-            filePath + '#' + revision );
+        ReviewItem.GetRichTextFormattedDiffContent( filePath, revision );
     }
 
     //-------------------------------------------------------------------------

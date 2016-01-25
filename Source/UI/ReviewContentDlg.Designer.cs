@@ -35,15 +35,18 @@
       // uiContent
       // 
       this.uiContent.Dock = System.Windows.Forms.DockStyle.Fill;
+      this.uiContent.Font = new System.Drawing.Font("Courier New", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
       this.uiContent.Location = new System.Drawing.Point(0, 0);
       this.uiContent.Name = "uiContent";
       this.uiContent.ReadOnly = true;
       this.uiContent.Size = new System.Drawing.Size(652, 521);
       this.uiContent.TabIndex = 1;
       this.uiContent.Text = "";
+      this.uiContent.WordWrap = false;
       // 
       // uiClose
       // 
+      this.uiClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
       this.uiClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
       this.uiClose.Location = new System.Drawing.Point(576, 1);
       this.uiClose.Name = "uiClose";
@@ -62,7 +65,6 @@
       this.ControlBox = false;
       this.Controls.Add(this.uiClose);
       this.Controls.Add(this.uiContent);
-      this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
       this.Name = "ReviewContentDlg";
       this.ShowInTaskbar = false;
       this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
