@@ -20,6 +20,9 @@ namespace Critr.UI
     {
       InitializeComponent();
 
+      // Add file path to the dlg title.
+      Text += ": " + filePath + '#' + revision;
+
       // Add the html renderer component.
       _uiContent.Dock = DockStyle.Fill;
       _uiContent.Text = ReviewItem.GetHtmlDiffContent( filePath, revision );

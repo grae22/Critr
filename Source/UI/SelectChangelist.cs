@@ -11,12 +11,15 @@ namespace Critr.UI
     //-------------------------------------------------------------------------
 
     public Changelist SelectedChangelist { get; private set; }
+    public string SelectedFile { get; private set; }
 
     //-------------------------------------------------------------------------
 
-    public SelectChangelist( Changelist changelist )
+    public SelectChangelist( Changelist changelist,
+                             string file )
     {
       SelectedChangelist = changelist;
+      SelectedFile = file;
 
       InitializeComponent();
     }
@@ -39,6 +42,25 @@ namespace Critr.UI
 
       PopulateChangelists();
       uiChangelists_SelectedIndexChanged( null, null );
+
+      // Select the selected changelist and file.
+      if( SelectedChangelist != null &&
+          uiChangelists.Items.Contains( SelectedChangelist ) )
+      {
+        uiChangelists.SelectedItem = SelectedChangelist;
+      }
+
+      if( SelectedFile != null )
+      {
+        foreach( string s in uiChangelistFiles.Items )
+        {
+          if( s == SelectedFile )
+          {
+            uiChangelistFiles.SelectedItem = SelectedFile;
+            break;
+          }
+        }
+      }
     }
 
     //-------------------------------------------------------------------------
@@ -164,6 +186,9 @@ namespace Critr.UI
 
     private void uiClose_Click( object sender, EventArgs e )
     {
+      SelectedChangelist = uiChangelists.SelectedItem as Changelist;
+      SelectedFile = uiChangelistFiles.SelectedItem as string;
+
       Close();
     }
 

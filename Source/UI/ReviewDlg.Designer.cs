@@ -115,9 +115,9 @@
       this.uiSubmittedDate.ForeColor = System.Drawing.Color.Navy;
       this.uiSubmittedDate.Location = new System.Drawing.Point(380, 55);
       this.uiSubmittedDate.Name = "uiSubmittedDate";
-      this.uiSubmittedDate.Size = new System.Drawing.Size(95, 13);
+      this.uiSubmittedDate.Size = new System.Drawing.Size(65, 13);
       this.uiSubmittedDate.TabIndex = 10;
-      this.uiSubmittedDate.Text = "2016/01/01 23:59";
+      this.uiSubmittedDate.Text = "2016/01/01";
       this.uiSubmittedDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
       // 
       // uiChangelist

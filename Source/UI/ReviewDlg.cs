@@ -74,7 +74,7 @@ namespace Critr.UI
 
         // General.
         uiChangelist.Text = ( changelist.Id > -1 ? changelist.Id.ToString() : "" );
-        uiSubmittedDate.Text = changelist.SubmittedDate.ToString( "yyyy/MM/dd hh:mm" );
+        uiSubmittedDate.Text = changelist.SubmittedDate.ToString( "yyyy/MM/dd" );
         uiChangelistDescription.Text = changelist.Description;
         uiFile.Text = Review.FilePath;
         uiFileRevision.Text = Review.FileRevision.ToString();
@@ -94,9 +94,14 @@ namespace Critr.UI
 
     private void uiSelectChangelist_Click( object sender, EventArgs e )
     {
-      SelectChangelist dlg = new SelectChangelist( null );
+      SelectChangelist dlg = new SelectChangelist( null, null );
       dlg.ShowDialog( this );
       dlg.Close();
+
+      Review.Changelist = dlg.SelectedChangelist;
+      Review.FilePath = dlg.SelectedFile;
+
+      PopulateForm();
     }
 
     //-------------------------------------------------------------------------
