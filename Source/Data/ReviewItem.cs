@@ -8,19 +8,27 @@ namespace Critr.Data
   {
     //-------------------------------------------------------------------------
 
+    private const string c_changeColour_addition = "#aaffaa";
+    private const string c_changeColour_subtraction = "#ffaaaa";
+
+    //-------------------------------------------------------------------------
+
     // Processes diff content produced using "p4 diff2 -du file1 file2".
 
-    public static string GetRichTextFormattedDiffContent(
+    public static string GetHtmlDiffContent(
       string p4filePath,
       int revision )
     {
-      string richText = "";
-
-      // Get the complete prev revision.
+      //-- Get the complete prev revision.
       string prevContent =
         Perforce.RunCommand(
           "print -q " + p4filePath + '#' + ( ( revision > 0 ) ? revision - 1 : revision ) );
 
+      // Make it html safe (replace the angle brackets).
+      prevContent = prevContent.Replace( "<", "&lt;" );
+      prevContent = prevContent.Replace( ">", "&gt;" );
+
+      // Split into individual lines.
       string[] tmpPrevContentLines =
         prevContent.Split( new string[] { Environment.NewLine }, StringSplitOptions.None );
 
@@ -29,28 +37,27 @@ namespace Critr.Data
       {
         prevContentLines.Add( line );
       }
-      
-      // Perform the diff.
+
+      //-- Perform the diff.
       string diffContent =
         Perforce.RunCommand(
           "diff2 -du " +
             p4filePath + '#' + ( revision - 1 ) + ' ' +
             p4filePath + '#' + revision );
 
+      // Make HTML safe (replace the angle brackets).
+      diffContent = diffContent.Replace( "<", "&lt;" );
+      diffContent = diffContent.Replace( ">", "&gt;" );
+
       string[] lines =
         diffContent.Split( new string[] { Environment.NewLine }, StringSplitOptions.None );
 
+      // Iterate through the diff's lines, applying changes to the previous revision as we go.
       int insertPoint = 0;
       int linesAdded = 0;
 
       foreach( string line in lines )
       {
-        // Skip the header.
-        if( line.IndexOf( "====" ) == 0 )
-        {
-          continue;
-        }
-
         // Is this line the beginning of a diff section?
         if( line.IndexOf( "@@" ) == 0 )
         {
@@ -65,43 +72,43 @@ namespace Critr.Data
 
           // Translate insert-point from range start at 1 to range starting at 0.
           insertPoint--;
-
           insertPoint += linesAdded;
 
           continue;
         }
 
-        if( line.Length == 0 )
+        if( line.Length > 0 )
         {
+          // Content was added.
+          if( line[ 0 ] == '+' )
+          {
+            if( insertPoint > prevContentLines.Count )
+            {
+              throw new Exception( "Insert-point is out-of-bounds." );
+            }
+
+            prevContentLines.Insert( insertPoint, "<font bgcolor='" + c_changeColour_addition + "'>" + line + "</font>" );
+            linesAdded++;
+          }
+          // Content was removed.
+          else if( line[ 0 ] == '-' )
+          {
+            if( insertPoint > prevContentLines.Count )
+            {
+              throw new Exception( "Insert-point is out-of-bounds." );
+            }
+
+            prevContentLines.RemoveAt( insertPoint );
+            prevContentLines.Insert( insertPoint, "<font bgcolor='" + c_changeColour_subtraction + "'>" + line + "</font>" );
+          }
+
           insertPoint++;
-          continue;
         }
-        // Content was added.
-        else if( line[ 0 ] == '+' )
-        {
-          if( insertPoint > prevContentLines.Count )
-          {
-            throw new Exception( "Insert-point is out-of-bounds." );
-          }
-
-          prevContentLines.Insert( insertPoint, line );
-          linesAdded++;
-        }
-        // Content was removed.
-        else if( line[ 0 ] == '-' )
-        {
-          if( insertPoint > prevContentLines.Count )
-          {
-            throw new Exception( "Insert-point is out-of-bounds." );
-          }
-
-          prevContentLines.RemoveAt( insertPoint );
-          prevContentLines.Insert( insertPoint, line );
-        }
-
-        insertPoint++;
       }
 
+      // Create a line-number format string - we want to pad the line number
+      // with enough zeroes so all line numbers in this file have the same
+      // number of digits.
       int lineNumber = 1;
       string lineNumberFormat = "";
       for( int i = 0; i < prevContentLines.Count.ToString().Length; i++ )
@@ -109,15 +116,46 @@ namespace Critr.Data
         lineNumberFormat += '0';
       }
 
+      // Create html.
+      string html =
+        "<html>" + Environment.NewLine +
+        "  <head><style>body { font-family: Courier New; font-size: 100%; }</style></head>" + Environment.NewLine +
+        "  <body>" + Environment.NewLine;
+
       foreach( string line in prevContentLines )
       {
-        richText +=
-          lineNumber.ToString( lineNumberFormat ) + " | " + line + Environment.NewLine;
+        html +=
+          lineNumber.ToString( lineNumberFormat ) + "&nbsp;|&nbsp;" + line + "<br />" + Environment.NewLine;
 
         lineNumber++;
       }
 
-      return richText;
+      html += Environment.NewLine + "  </body>" + Environment.NewLine + "</html>";
+
+      string htmlCopy = html;
+      bool isAngleBrackOpen = false;
+      int htmlOffset = 0;
+      for( int i = 0; i < htmlCopy.Length; i++ )
+      {
+        if( htmlCopy[ i ] == '<' )
+        {
+          isAngleBrackOpen = true;
+        }
+        else if( htmlCopy[ i ] == '>' )
+        {
+          isAngleBrackOpen = false;
+        }
+        else if( htmlCopy[ i ] == ' ' &&
+                 isAngleBrackOpen == false )
+        {
+          html.Insert( htmlOffset, "&nbsp;" );
+          i += "&nbsp;".Length - 1;
+        }
+
+        htmlOffset++;
+      }
+
+      return html;
     }
 
     //=========================================================================
