@@ -134,13 +134,18 @@ namespace Critr.Data
 
       foreach( string line in prevContentLines )
       {
+        // TODO: Line numbering is wrong.
         html +=
-          lineNumber.ToString( lineNumberFormat ) + "&nbsp;|&nbsp;" + line + "<br />" + Environment.NewLine;
+          /*lineNumber.ToString( lineNumberFormat ) +*/ "&nbsp;|&nbsp;" + line + "<br />" + Environment.NewLine;
 
         lineNumber++;
       }
 
       html += Environment.NewLine + "</body>" + Environment.NewLine + "</html>";
+
+      // Highlight tab chars.
+      // TODO: This doesn't seem to work.
+      html = html.Replace( "" + System.Windows.Forms.Keys.Tab, "<font bgcolor='red'>_</font>" );
 
       // Replace spaces with '@nbsp;' (exclude tags).
       string htmlCopy = html;
@@ -172,7 +177,7 @@ namespace Critr.Data
       html =
         html.Insert(
           html.IndexOf( "</head>" ),
-          "<style>body { white-space: nowrap; font-family: Courier New; font-size: 100%; }</style>" );
+          "<style>body { white-space: pre; font-family: Courier New; font-size: 100%; }</style>" );
 
       return html;
     }
