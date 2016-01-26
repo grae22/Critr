@@ -51,7 +51,7 @@ namespace Critr.Data
     {
       string output =
         Perforce.RunCommand(
-          "changes @" + fromDate.ToString( "yyyy/MM/dd:00:00" ) + ",@" +
+          "changes -s submitted @" + fromDate.ToString( "yyyy/MM/dd:00:00" ) + ",@" +
           toDate.ToString( "yyyy/MM/dd:23:59" ) );
 
       string[] lines =
@@ -105,13 +105,23 @@ namespace Critr.Data
         int descriptionStartIndex = tmp.IndexOf( "'" ) + 1;
         int descriptionLength = tmp.LastIndexOf( "'" ) - descriptionStartIndex;
 
-        string description =
-          tmp.Substring( descriptionStartIndex, descriptionLength );
+        string description = "";
 
-        if( description.Length > 30 )
+        if( descriptionStartIndex > 0 &&
+            descriptionLength > 0 )
         {
-          description = description.TrimEnd() + "...";
+          description = tmp.Substring( descriptionStartIndex, descriptionLength );
         }
+
+        if( description.Length == 0 )
+        {
+          description = "(No description)";
+        }
+
+        //if( description.Length > 30 )
+        //{
+        //  description = description.TrimEnd() + "...";
+        //}
 
         // Create the changelist object if we don't already have one.
         if( Changelists.ContainsKey( changelistNumber ) == false )

@@ -87,7 +87,11 @@ namespace Critr.Data
               throw new Exception( "Insert-point is out-of-bounds." );
             }
 
-            prevContentLines.Insert( insertPoint, "<font bgcolor='" + c_changeColour_addition + "'>" + line + "</font>" );
+            string tmp = line.Remove( 0, 1 );
+            
+            prevContentLines.Insert(
+              insertPoint, "<font bgcolor='" + c_changeColour_addition + "'>" + tmp + "</font>" );
+            
             linesAdded++;
           }
           // Content was removed.
@@ -98,7 +102,7 @@ namespace Critr.Data
               throw new Exception( "Insert-point is out-of-bounds." );
             }
 
-            string tmp = line;
+            string tmp = line.Remove( 0, 1 );
             while( tmp.Length < 80 )
             {
               tmp += ' ';
@@ -168,7 +172,7 @@ namespace Critr.Data
       html =
         html.Insert(
           html.IndexOf( "</head>" ),
-          "<style>body { font-family: Courier New; font-size: 100%; }</style>" );
+          "<style>body { white-space: nowrap; font-family: Courier New; font-size: 100%; }</style>" );
 
       return html;
     }
